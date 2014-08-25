@@ -118,7 +118,7 @@ describe PeopleController do
 
   describe '#tag_index' do
     it 'works for js' do
-      get :tag_index, :name => 'jellybeans', :format => :js
+      xhr :get, :tag_index, :name => 'jellybeans', :format => :js
       response.should be_success
     end
 
@@ -126,7 +126,7 @@ describe PeopleController do
       f = FactoryGirl.create(:person)
       f.profile.tag_string = "#seeded"
       f.profile.save
-      get :tag_index, :name => 'seeded', :format => :js
+      xhr :get, :tag_index, :name => 'seeded', :format => :js
       assigns[:people].count.should == 1
     end
   end
@@ -263,7 +263,7 @@ describe PeopleController do
         end
 
         it "posts include reshares" do
-          reshare = @user.post(:reshare, :public => true, :root_guid => FactoryGirl.create(:status_message, :public => true).guid, :to => alice.aspects)
+          reshare = @user.post(:reshare, :public => true, :root_guid => FactoryGirl.create(:status_message, :public => true).guid, :to => alice.aspect_ids)
           get :show, :id => @user.person.to_param
           assigns[:stream].posts.map { |x| x.id }.should include(reshare.id)
         end
@@ -319,7 +319,7 @@ describe PeopleController do
       end
 
       it "posts include reshares" do
-        reshare = @user.post(:reshare, :public => true, :root_guid => FactoryGirl.create(:status_message, :public => true).guid, :to => alice.aspects)
+        reshare = @user.post(:reshare, :public => true, :root_guid => FactoryGirl.create(:status_message, :public => true).guid, :to => alice.aspect_ids)
         get :show, :id => @user.person.to_param
         assigns[:stream].posts.map { |x| x.id }.should include(reshare.id)
       end
@@ -361,7 +361,7 @@ describe PeopleController do
       end
 
       it "posts include reshares" do
-        reshare = @user.post(:reshare, :public => true, :root_guid => FactoryGirl.create(:status_message, :public => true).guid, :to => alice.aspects)
+        reshare = @user.post(:reshare, :public => true, :root_guid => FactoryGirl.create(:status_message, :public => true).guid, :to => alice.aspect_ids)
         get :show, :id => @user.person.to_param
         assigns[:stream].posts.map { |x| x.id }.should include(reshare.id)
       end

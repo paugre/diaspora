@@ -3,7 +3,7 @@
 #   the COPYRIGHT file.
 
 class PhotosController < ApplicationController
-  before_filter :authenticate_user!, :except => :show
+  before_action :authenticate_user!, :except => :show
 
   respond_to :html, :json
 
@@ -26,7 +26,7 @@ class PhotosController < ApplicationController
 
       if @contact
         @contacts_of_contact = @contact.contacts
-        @contacts_of_contact_count = @contact.contacts.count
+        @contacts_of_contact_count = @contact.contacts.count(:all)
       else
         @contact = Contact.new
       end
