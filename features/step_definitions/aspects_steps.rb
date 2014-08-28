@@ -6,12 +6,12 @@ module AspectCukeHelpers
   def toggle_aspect(a_name)
     a_id = @me.aspects.where(name: a_name).pluck(:id).first
     aspect_css = ".dropdown li[data-aspect_id='#{a_id}']"
-    page.should have_selector(aspect_css)
+    expect(page).to have_selector(aspect_css)
     find(aspect_css).click
   end
 
   def aspect_dropdown_visible?
-    find('.aspect_membership.dropdown.active').should be_visible
+    expect(find('.aspect_membership.dropdown.active')).to be_visible
   end
 end
 World(AspectCukeHelpers)
@@ -41,17 +41,17 @@ When /^I select "([^"]*)" aspect as well$/ do |aspect_name|
   step %Q(I should see "#{aspect_name}" aspect selected)
 end
 
-When /^I check the first contact list button$/ do
-  find(".contact_list .btn", match: :first).tap do |button|
+When /^I add the first person to the aspect$/ do
+  find(".contact_add-to-aspect", match: :first).tap do |button|
     button.click
-    button.parent.should have_css ".added"
+    button.parent.should have_css ".contact_remove-from-aspect"
   end
 end
 
-When /^I uncheck the first contact list button$/ do
-  find(".contact_list .btn", match: :first).tap do |button|
+When /^I remove the first person from the aspect$/ do
+  find(".contact_remove-from-aspect", match: :first).tap do |button|
     button.click
-    button.parent.should have_css ".add"
+    button.parent.should have_css ".contact_add-to-aspect"
     sleep 1 # The expectation above should wait for the request to finsh, but that doesn't work for some reason
   end
 end

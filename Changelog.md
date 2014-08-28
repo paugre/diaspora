@@ -12,13 +12,25 @@ Rails.application.config.secret_token = '***********...'
 Diaspora::Application.config.secret_key_base = '*************...'
 ```
 
+## Change in defaults.yml
+The default for including jQuery from a CDN has changed. If you want to continue to include it from a CDN, please explicitly set the `jquery_cdn` setting to `true` in diaspora.yml.
 
 ## Refactor
+* Redesign contacts page [#5153](https://github.com/diaspora/diaspora/pull/5153)
+* Improve profile page design on mobile [#5084](https://github.com/diaspora/diaspora/pull/5084)
+* Port testsuite to RSpec 3 [#5170](https://github.com/diaspora/diaspora/pull/5170)
 
 ## Bug fixes
+* orca cannot see 'Add Contact' button [#5158](https://github.com/diaspora/diaspora/pull/5158)
+* Move submit button to the right in conversations view [#4960](https://github.com/diaspora/diaspora/pull/4960)
 
 ## Features
 * Don't pull jQuery from a CDN by default [#5105](https://github.com/diaspora/diaspora/pull/5105)
+* Better character limit message [#5151](https://github.com/diaspora/diaspora/pull/5151)
+* Remember whether a AccountDeletion was performed [#5156](https://github.com/diaspora/diaspora/pull/5156)
+* Increased the number of notifications shown in drop down bar to 15 [#5129](https://github.com/diaspora/diaspora/pull/5129)
+* Increase possible captcha length [#5169](https://github.com/diaspora/diaspora/pull/5169)
+* Display visibility icon in publisher aspects dropdown [#4982](https://github.com/diaspora/diaspora/pull/4982)
 
 # 0.4.1.0
 
@@ -99,7 +111,7 @@ Read more in [#4249](https://github.com/diaspora/diaspora/pull/4249) and [#4883]
 * Reorder and reword items on user settings page [#4912](https://github.com/diaspora/diaspora/pull/4912)
 * SPV: Improve padding and interaction counts [#4426](https://github.com/diaspora/diaspora/pull/4426)
 * Remove auto 'mark as read' for notifications [#4810](https://github.com/diaspora/diaspora/pull/4810)
-* Improve set read/unread in notifications dropdown [#4869](https://github.com/diaspora/diaspora/pull/4869) 
+* Improve set read/unread in notifications dropdown [#4869](https://github.com/diaspora/diaspora/pull/4869)
 * Refactor publisher: trigger events for certain actions, introduce 'disabled' state [#4932](https://github.com/diaspora/diaspora/pull/4932)
 
 ## Bug fixes
