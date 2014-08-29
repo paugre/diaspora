@@ -31,6 +31,9 @@ module NavigationHelpers
           # '.diaspora_handle' on desktop, '.description' on mobile
           special_elem: { selector: '.diaspora_handle, .description', text: p.diaspora_handle }
         }
+      when /^"([^\"]*)"'s photos page$/
+        p = User.find_by_email($1).person
+        person_photos_path p
       when /^my account settings page$/
         edit_user_path
       when /^my new profile page$/
@@ -68,7 +71,7 @@ module NavigationHelpers
 
   def confirm_on_page(page_name)
     current_path = URI.parse(current_url).path
-    current_path.should == path_to(page_name)
+    expect(current_path).to eq(path_to(page_name))
   end
 end
 

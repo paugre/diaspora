@@ -19,23 +19,23 @@ Then /^I should not see any posts in my stream$/ do
 end
 
 Then /^I should not be able to submit the publisher$/ do
-  expect(publisher_submittable?).to be_false
+  expect(publisher_submittable?).to be false
 end
 
 Given /^"([^"]*)" has a public post with text "([^"]*)"$/ do |email, text|
   user = User.find_by_email(email)
-  user.post(:status_message, :text => text, :public => true, :to => user.aspects)
+  user.post(:status_message, :text => text, :public => true, :to => user.aspect_ids)
 end
 
 Given /^"([^"]*)" has a non public post with text "([^"]*)"$/ do |email, text|
   user = User.find_by_email(email)
-  user.post(:status_message, :text => text, :public => false, :to => user.aspects)
+  user.post(:status_message, :text => text, :public => false, :to => user.aspect_ids)
 end
 
 And /^the post with text "([^"]*)" is reshared by "([^"]*)"$/ do |text, email|
   user = User.find_by_email(email)
   root = Post.find_by_text(text)
-  user.post(:reshare, :root_guid => root.guid, :public => true, :to => user.aspects)
+  user.post(:reshare, :root_guid => root.guid, :public => true, :to => user.aspect_ids)
 end
 
 And /^I submit the publisher$/ do

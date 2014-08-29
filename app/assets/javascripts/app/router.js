@@ -1,6 +1,7 @@
 app.Router = Backbone.Router.extend({
   routes: {
     "help": "help",
+    "contacts": "contacts",
 
     //new hotness
     "posts/:id": "singlePost",
@@ -23,7 +24,7 @@ app.Router = Backbone.Router.extend({
     "people/:id": "stream",
     "u/:name": "stream"
   },
-  
+
   initialize: function() {
     // To support encoded linefeeds (%0A) we need to specify
     // our own internal router.route call with the correct regexp.
@@ -35,6 +36,10 @@ app.Router = Backbone.Router.extend({
     app.help = new app.views.Help();
     $("#help").prepend(app.help.el);
     app.help.render();
+  },
+
+  contacts: function() {
+    app.contacts = new app.views.Contacts();
   },
 
   singlePost : function(id) {
@@ -59,7 +64,7 @@ app.Router = Backbone.Router.extend({
 
     $("#main_stream").html(app.page.render().el);
     $('#selected_aspect_contacts .content').html(streamFacesView.render().el);
-    this.hideInactiveStreamLists();
+    this._hideInactiveStreamLists();
   },
 
   photos : function() {
@@ -84,7 +89,7 @@ app.Router = Backbone.Router.extend({
           );
       $("#author_info").prepend(followedTagsAction.render().el)
     }
-    this.hideInactiveStreamLists();
+    this._hideInactiveStreamLists();
   },
 
   aspects : function(){
@@ -107,10 +112,10 @@ app.Router = Backbone.Router.extend({
 
     $("#main_stream").html(app.page.render().el);
     $('#selected_aspect_contacts .content').html(streamFacesView.render().el);
-    this.hideInactiveStreamLists();
+    this._hideInactiveStreamLists();
   },
 
-  hideInactiveStreamLists: function() {
+  _hideInactiveStreamLists: function() {
     if(this.aspects_list && Backbone.history.fragment != "aspects")
       this.aspects_list.hideAspectsList();
 

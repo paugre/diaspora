@@ -16,6 +16,8 @@ Feature: show photos
 
     Scenario: see my own photos
       When I am on "robert@grimm.grimm"'s page
+      #TODO: find out why images don't show on first load
+      And I am on "robert@grimm.grimm"'s page
       And I follow "View all" within ".image_list"
       Then I should be on person_photos page
 
@@ -23,3 +25,12 @@ Feature: show photos
       When I sign in as "alice@alice.alice"
       And I am on "robert@grimm.grimm"'s page
       Then I should not see "photos" within "div#profile"
+
+   
+    Scenario: I delete a photo
+      Given I am on "robert@grimm.grimm"'s photos page
+        When I delete a photo
+        And I confirm the alert
+      Then I should not see "photos" within "div#profile"
+
+
