@@ -29,7 +29,7 @@ gem 'simple_captcha2', '0.3.2', :require => 'simple_captcha'
 
 # Background processing
 
-gem 'sidekiq', '2.17.7'
+gem 'sidekiq', '3.2.3'
 gem 'sinatra', '1.3.3'
 
 # Compression
@@ -76,20 +76,21 @@ gem 'entypo-rails', '2.2.2'
 
 # JavaScript
 
-gem 'backbone-on-rails', '1.1.1'
-gem 'handlebars_assets', '0.12.0'
-gem 'jquery-rails',      '3.0.4'
+gem 'backbone-on-rails',   '1.1.1'
+gem 'handlebars_assets',   '0.17.1'
+gem 'jquery-rails',        '3.1.2'
+gem 'rails-assets-jquery', '1.11.1' # Should be kept in sync with jquery-rails
+gem 'js_image_paths',      '0.0.1'
 
 # jQuery plugins
 
 gem 'rails-assets-perfect-scrollbar', '0.4.11'
-gem 'rails-assets-jquery', '1.10.2'
 
 # Localization
 
 gem 'http_accept_language', '2.0.2'
 gem 'i18n-inflector-rails', '1.0.7'
-gem 'rails-i18n',           '4.0.2'
+gem 'rails-i18n',           '4.0.3'
 
 # Mail
 
@@ -108,7 +109,7 @@ gem 'opengraph_parser', '0.2.3'
 
 # Services
 
-gem 'omniauth',          '1.2.1'
+gem 'omniauth',          '1.2.2'
 gem 'omniauth-facebook', '1.6.0'
 gem 'omniauth-tumblr',   '1.1'
 gem 'omniauth-twitter',  '1.0.1'
@@ -117,7 +118,7 @@ gem 'omniauth-wordpress','0.2.1'
 
 # Tags
 
-gem 'acts-as-taggable-on', '3.3.0'
+gem 'acts-as-taggable-on', '3.4.1'
 
 # URIs and HTTP
 
@@ -194,7 +195,7 @@ group :test do
   gem 'fixture_builder',   '0.3.6'
   gem 'fuubar',            '2.0.0'
   gem 'rspec-instafail',   '0.2.5', :require => false
-  gem 'test_after_commit', '0.2.5'
+  gem 'test_after_commit', '0.2.6'
 
   # Cucumber (integration tests)
 
@@ -212,7 +213,7 @@ end
 
 group :development, :test do
   # RSpec (unit tests, some integration tests)
-  gem 'rspec-rails',     '3.0.2'
+  gem 'rspec-rails',     '3.1.0'
 
   # Cucumber (integration tests)
   gem 'cucumber-rails',     '1.4.1', :require => false

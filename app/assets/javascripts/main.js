@@ -2,6 +2,7 @@
  *   licensed under the Affero General Public License version 3 or later.  See
  *   the COPYRIGHT file.
  */
+//= require js_image_paths
 //= require underscore
 //= require backbone
 //= require jquery.hotkeys
@@ -20,7 +21,7 @@
 //= require jquery.autocomplete-custom
 //= require keycodes
 //= require fileuploader-custom
-//= require handlebars-1.0.0.beta.6
+//= require handlebars.runtime
 //= require markdown
 //= require punycode
 //= require parse_url
